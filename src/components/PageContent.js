@@ -44,16 +44,16 @@ function PageContent() {
     
     return (
         <div>
-            <div>
-                <h2>{currentDate}</h2>
-                <h3>{todayHaiku.day}</h3>
-            </div>
-            <div>
-                <img id="haiku_image" src="https://png.pngtree.com/png-clipart/20221028/original/pngtree-under-construction-png-image_8741247.png" alt="placeholder"></img>
+            <div className='container-lg text-center p-4'>
+                <h2 className='display-4'>{currentDate}</h2>
+                <h3 className='h3'>{todayHaiku.day}</h3>
             </div>
             <div id="haiku_container">
                 <Haiku todayHaiku = {todayHaiku} />
-            </div>    
+            </div>   
+            <div>
+                <img id="haiku_image" src="https://png.pngtree.com/png-clipart/20221028/original/pngtree-under-construction-png-image_8741247.png" alt="placeholder"></img>
+            </div>
         </div>
     )
 }
