@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import Haiku from './Haiku'
 
 function PageContent() {
+
     const [haikusArray, setHaikus] = useState([])
     const [todayHaiku, setTodayHaiku] = useState({})
 
@@ -10,7 +12,6 @@ function PageContent() {
         .then(Haikus => {
             // console.log(Haikus)
             setHaikus(Haikus)
-
             }
         )
     }, [])
@@ -30,29 +31,28 @@ function PageContent() {
         const date = new Date();
         date.setMonth(monthNumber - 1);
         return date.toLocaleString('en-US', { month: 'long' });
-      }
+    }
     
     function findHaiku(haikus) {
         haikus.forEach(haiku => {
             if (haiku.date === `${month_text} ${currentDay}`) {
-                console.log(haiku)
                 setTodayHaiku(haiku)
             }
         }
         )
     }
+    
     return (
         <div>
             <div>
                 <h2>{currentDate}</h2>
                 <h3>{todayHaiku.day}</h3>
             </div>
-            <div id="haiku_image">
-                <img src="https://png.pngtree.com/png-clipart/20221028/original/pngtree-under-construction-png-image_8741247.png" alt="placeholder"></img>
+            <div>
+                <img id="haiku_image" src="https://png.pngtree.com/png-clipart/20221028/original/pngtree-under-construction-png-image_8741247.png" alt="placeholder"></img>
             </div>
             <div id="haiku_container">
-                <h2>{todayHaiku.body}</h2>
-                {/* <h3>{haikus.haiku}</h3> */}
+                <Haiku todayHaiku = {todayHaiku} />
             </div>    
         </div>
     )
