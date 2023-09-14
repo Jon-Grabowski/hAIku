@@ -42,9 +42,11 @@ function Archive() {
     console.log(haikuCards)
 
     return (
-        <div className='text-center'>
+        <div className='container text-center'>
             <h1>ARCHIVE PAGE</h1>
-            {haikuCards}
+            <div className='d-inline-flex flex-wrap'>
+                {haikuCards}
+            </div>
         </div>
     )
 }

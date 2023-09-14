@@ -15,6 +15,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.archive-card{
+  min-width: 24rem;
+}
 
 #haiku_image{
   max-width: 40rem;
