@@ -35,7 +35,7 @@ function PageContent() {
     
     function findHaiku(haikus) {
         haikus.forEach(haiku => {
-            if (haiku.date === `${month_text} ${currentDay}`) {
+            if (haiku.date === `${currentDay}`) {
                 setTodayHaiku(haiku)
             }
         }
