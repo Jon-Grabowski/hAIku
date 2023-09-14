@@ -1,18 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import Header from './components/Header';
+import NavBar from './components/NavBar';
 import PageContent from './components/PageContent';
+import Archive from './components/Archive';
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   
   return (
-    <div>
-      <div id="header">
-        <Header />
-      </div>
-      <div id="body">
-        <PageContent />
-      </div>
+    <div className='App'>
+      <NavBar />
+      <Routes>
+        <Route exact path='/' element={<PageContent />}/>
+        <Route exact path='/archive' element={<Archive />}/>
+
+      </Routes>
     </div>
   );
 }
