@@ -3,6 +3,8 @@ import ArchiveCard from "./ArchiveCard"
 
 function Archive() {
     const [haikusArray, setHaikus] = useState([])
+    const [selectedMonth, setSelectedMonth] = useState('')
+    const [selectedYear, setSelectedYear] = useState('')
 
     const date = new Date()
     const currentDay = date.getDate()
@@ -10,7 +12,6 @@ function Archive() {
     const month_text = getMonthName(month)
     const year = date.getFullYear()
     const currentDate = `${month_text} ${currentDay}, ${year}`
-    // console.log(day)
     function getMonthName(monthNumber) {
         const date = new Date();
         date.setMonth(monthNumber - 1);
@@ -28,12 +29,14 @@ function Archive() {
 
     useEffect(()=>{
         getAllHaikusByMonth('September')
+        setSelectedMonth(month_text)
+        setSelectedYear(year)
     }, [])
     const filteredHaikus = haikusArray.filter((haiku) => haiku.date <= currentDay)
     const haikuCards = filteredHaikus.map((haiku)=>{
-        if (haiku.date <= currentDay) {
+        if (haiku.date < currentDay) {
             return (
-                <ArchiveCard key={haiku.date}haiku={haiku} />
+                <ArchiveCard key={haiku.date}haiku={haiku} selectedMonth={selectedMonth} />
             )
         } else {
         }
@@ -43,9 +46,9 @@ function Archive() {
 
     return (
         <div className='container text-center'>
-            <h1>ARCHIVE PAGE</h1>
+            <h1>{selectedMonth+' '+selectedYear}</h1>
             <div className='d-inline-flex flex-wrap'>
-                {haikuCards}
+                {haikuCards.reverse()}
             </div>
         </div>
     )
