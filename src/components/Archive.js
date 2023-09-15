@@ -19,8 +19,8 @@ function Archive() {
         return date.toLocaleString('en-US', { month: 'long' });
     }
 
-    function getAllHaikusByMonth(month_text){
-        fetch(`http://localhost:3001/September`)
+    function getAllHaikusByMonth(month){
+        fetch(`http://localhost:3001/${month}`)
         .then(res => res.json())
         .then(Haikus => {
             setHaikus(Haikus)
@@ -29,18 +29,19 @@ function Archive() {
     }
 
     function handleClickMonth(e) {
-        console.log(e.target.innerText)
+        
+        getAllHaikusByMonth(e.target.innerText)
+        setSelectedMonth(e.target.innerText)
     }
 
     useEffect(()=>{
-        getAllHaikusByMonth('September')
+        getAllHaikusByMonth(month_text)
         setSelectedMonth(month_text)
         setSelectedYear(year)
     }, [])
 
     useEffect(() => {
         if (selectedYear === 2023) {
-            console.log(selectedYear)
             setIs2023(true)
         } else {
             setIs2023(false)
