@@ -4,6 +4,7 @@ import ArchiveCard from "./ArchiveCard"
 function Archive() {
     const [haikusArray, setHaikus] = useState([])
     const [selectedMonth, setSelectedMonth] = useState('')
+    const [selectedMonthNum, setSelectedMonthNum] = useState('')
     const [selectedYear, setSelectedYear] = useState('')
     const [is2023, setIs2023] = useState(false)
 
@@ -32,6 +33,7 @@ function Archive() {
         
         getAllHaikusByMonth(e.target.innerText)
         setSelectedMonth(e.target.innerText)
+        setSelectedMonthNum(parseInt(e.target.getAttribute('value')))
     }
 
     useEffect(()=>{
@@ -48,15 +50,21 @@ function Archive() {
         }
     }, [selectedYear])
 
-    const filteredHaikus = haikusArray.filter((haiku) => haiku.date <= currentDay)
-    const haikuCards = filteredHaikus.map((haiku)=>{
-        if (haiku.date < currentDay) {
+    // const filteredHaikus = haikusArray.filter((haiku) => haiku.date <= currentDay)
+    const haikuCards = haikusArray.map((haiku)=>{
+        if (selectedMonthNum < month) {
             return (
                 <ArchiveCard key={haiku.date}haiku={haiku} selectedMonth={selectedMonth} />
             )
-        } else {
-        }
+            
+            }else if (selectedMonthNum === month && haiku.date < currentDay){
+                return (
+                    <ArchiveCard key={haiku.date}haiku={haiku} selectedMonth={selectedMonth} />
+                )}
     })
+
+    console.log(selectedMonthNum)
+    console.log(month)
 
     return (
         <div className='container text-center mt-3'>
@@ -68,10 +76,10 @@ function Archive() {
                         {selectedMonth}
                         </button>
                         <ul className="dropdown-menu">
-                            <li onClick={handleClickMonth}><p className="dropdown-item">December</p></li>
-                            <li onClick={handleClickMonth}><p className="dropdown-item">November</p></li>
-                            <li onClick={handleClickMonth}><p className="dropdown-item">October</p></li>
-                            <li onClick={handleClickMonth}><p className="dropdown-item">September</p></li>
+                            <li onClick={handleClickMonth}><p className="dropdown-item" value='12'>December</p></li>
+                            <li onClick={handleClickMonth}><p className="dropdown-item" value='11'>November</p></li>
+                            <li onClick={handleClickMonth}><p className="dropdown-item" value='10'>October</p></li>
+                            <li onClick={handleClickMonth}><p className="dropdown-item" value='9'>September</p></li>
                             {is2023 ? <li><p className="dropdown-item disabled">August</p></li> : <li onClick={handleClickMonth}><p className="dropdown-item">August</p></li>}
                             {is2023 ? <li><p className="dropdown-item disabled">July</p></li> : <li onClick={handleClickMonth}><p className="dropdown-item">July</p></li>}
                             {is2023 ? <li><p className="dropdown-item disabled">June</p></li> : <li onClick={handleClickMonth}><p className="dropdown-item">June</p></li>}
