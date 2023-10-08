@@ -52,16 +52,18 @@ function Archive() {
     }, [selectedYear])
 
     // const filteredHaikus = haikusArray.filter((haiku) => haiku.date <= currentDay)
+    
     const haikuCards = haikusArray.map((haiku)=>{
         if (selectedMonthNum < month) {
             return (
                 <ArchiveCard key={haiku.date}haiku={haiku} selectedMonth={selectedMonth} />
             )
-            
-            }else if (selectedMonthNum === month && haiku.date < currentDay){
-                return (
-                    <ArchiveCard key={haiku.date}haiku={haiku} selectedMonth={selectedMonth} />
-                )}
+        }else if (selectedMonthNum === month && haiku.date < currentDay){
+            return (
+                <ArchiveCard key={haiku.date}haiku={haiku} selectedMonth={selectedMonth} />
+            )
+        }else {
+        }
     })
 
     console.log(haikuCards)
