@@ -40,6 +40,7 @@ function Archive() {
         getAllHaikusByMonth(month_text)
         setSelectedMonth(month_text)
         setSelectedYear(year)
+        setSelectedMonthNum(month)
     }, [])
 
     useEffect(() => {
