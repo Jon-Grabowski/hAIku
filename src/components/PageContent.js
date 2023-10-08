@@ -48,9 +48,11 @@ function PageContent() {
                 <h2 className='display-4'>{currentDate}</h2>
                 <h3 className='h3'>{todayHaiku.day}</h3>
             </div>
-            <div id="haiku_container">
-                <Haiku todayHaiku = {todayHaiku} />
-            </div>   
+            <div className='d-flex justify-content-center'>
+                <div id="haiku_container" className='bg-white border border-5 border-black rounded shadow w-50 p-5'>
+                    <Haiku todayHaiku = {todayHaiku} />
+                </div> 
+            </div>  
             <div>
                 <img id="haiku_image" src="https://png.pngtree.com/png-clipart/20221028/original/pngtree-under-construction-png-image_8741247.png" alt="placeholder"></img>
             </div>

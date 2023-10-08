@@ -5,7 +5,7 @@ function Haiku({todayHaiku}) {
         
         const haikuLines = bodyArray.map(line => {
             line = line.trim()
-            return <p key={line} className='my-1 display-6'>{line}</p>
+            return <p key={line} className='my-1 display-6'><strong>{line}</strong></p>
         })
         return (
             <div className='text-center'>

@@ -64,8 +64,7 @@ function Archive() {
                 )}
     })
 
-    console.log(selectedMonthNum)
-    console.log(month)
+    console.log(haikuCards)
 
     return (
         <div className='container text-center mt-3'>
