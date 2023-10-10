@@ -18,8 +18,12 @@ code {
 .archive-card{
   min-width: 24rem;
   max-width: 24rem;
+  min-height: 13rem;
+  transition: all .2s ease-in-out; 
 }
 
 #haiku_image{
   max-width: 40rem;
 }
+
+
